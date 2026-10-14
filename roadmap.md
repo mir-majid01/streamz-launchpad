@@ -1,5 +1,5 @@
-# StreamZ prototype
-- [ ] Establish cinematic design system and shared navigation/footer.
-- [ ] Build Home, Features, Download, About, Support, Privacy, Terms and custom 404.
-- [ ] Implement honest centralized APK handling, FAQ search and accessible interactions.
-- [ ] Verify tests, lint, all routes and mobile/desktop flows.
+# StreamZ targeted cinematic redesign
+- [ ] Inspect upstream Android screens and assets; distinguish verified interfaces from concepts.
+- [ ] Redesign the Home possibilities section and Features artwork/layout without presenting a fake catalogue.
+- [ ] Replace mock contact details with the confirmed email and Telegram destinations across the site.
+- [ ] Verify routes, tests, lint, contact links, images, and mobile layout/scroll behavior.
