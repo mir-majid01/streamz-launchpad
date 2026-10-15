@@ -6,7 +6,7 @@ import { brandFrames, features } from "@/config/features";
 
 describe("StreamZ release rules", () => {
   it("defaults to the requested local APK URL", () => { expect(STREAMZ_APK_URL).toBe("/downloads/StreamZ.apk"); expect(site.apkUrl).toBe(STREAMZ_APK_URL); });
-  it("keeps the prototype support address", () => { expect(site.supportEmail).toBe("support@example.com"); });
+  it("uses the confirmed support email and Telegram destination", () => { expect(site.supportEmail).toBe("streamzz.official@gmail.com"); expect(site.telegramUrl).toBe("https://t.me/Mirmajid01"); expect(site.socials).toContainEqual({ label: "Telegram · @Mirmajid01", url: "https://t.me/Mirmajid01" }); });
   it("does not invent release metadata", () => { expect(Object.values(site.release)).toEqual(["", "", "", "", ""]); });
   it("rejects an unconfigured URL", async () => { const fetcher = vi.fn(); expect(await verifyApk("", fetcher)).toBe(false); expect(fetcher).not.toHaveBeenCalled(); });
   it("rejects a missing local APK", async () => { expect(await verifyApk("/downloads/StreamZ.apk", vi.fn().mockResolvedValue(new Response(null, { status: 404 })))).toBe(false); });
