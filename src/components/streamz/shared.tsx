@@ -6,6 +6,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { DownloadButton } from "./download-button";
 import { faqs } from "@/config/faq";
 import { brandFrames, features, type FeatureArtKind } from "@/config/features";
+import orbitArtwork from "@/assets/cinema-orbit.jpg";
+import desertArtwork from "@/assets/cinema-desert.jpg";
+import underwaterArtwork from "@/assets/cinema-underwater.jpg";
+import coastArtwork from "@/assets/cinema-coast.jpg";
+
+const featureArtwork: Record<FeatureArtKind, { src: string; width: number; height: number }> = {
+  discovery: { src: orbitArtwork, width: 1024, height: 1536 },
+  live: { src: coastArtwork, width: 1536, height: 960 },
+  offline: { src: desertArtwork, width: 854, height: 1280 },
+  language: { src: underwaterArtwork, width: 854, height: 1280 },
+  saved: { src: orbitArtwork, width: 1024, height: 1536 },
+  updates: { src: coastArtwork, width: 1536, height: 960 },
+};
 
 type RevealStyle = "rise" | "mask" | "scale" | "left" | "right";
 
@@ -39,12 +52,16 @@ export function PageIntro({ eyebrow, title, description }: { eyebrow: string; ti
   return <section className="page-intro wrap entrance"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{description}</p></section>;
 }
 export function FeatureArt({ type }: { type: FeatureArtKind }) {
+  const artwork = featureArtwork[type];
+  const index = features.findIndex((feature) => feature.art === type);
   return <div className={`feature-art art-${type}`} aria-hidden="true">
-    {type === "discovery" ? <><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="orbit orbit-three" /><Compass className="art-icon" size={36} /></> : type === "live" ? <><div className="wave-bars">{Array.from({length: 19}, (_, i) => <i key={i} />)}</div><span className="live-pill"><i />IN THE MOMENT</span></> : type === "offline" ? <><div className="art-file file-back" /><div className="art-file"><Download size={32} /><div className="download-progress" /></div><span className="art-small-label">READY WHEN YOU ARE</span></> : type === "language" ? <><span className="language-word">Hello.</span><span className="language-other">Hola. Bonjour. こんにちは.</span></> : type === "saved" ? <><div className="saved-stack" /><Bookmark size={45} className="art-icon" /></> : <><RefreshCw size={48} className="update-icon" /><span className="art-small-label">THE NEXT CHAPTER</span></>}
+    <img src={artwork.src} width={artwork.width} height={artwork.height} loading="lazy" className="feature-art-photo" />
+    <span className="feature-art-vignette" />
+    <span className="feature-art-caption"><span>ORIGINAL MOOD STUDY</span><span>0{index + 1} / 06</span></span>
   </div>;
 }
 export function FeatureGrid({ all = false }: { all?: boolean }) {
-  return <div className="feature-grid">{features.slice(0, all ? 6 : 3).map((feature, index) => <Reveal key={feature.title} className="feature-card" reveal={index === 0 ? "mask" : "rise"}><FeatureArt type={feature.art} /><div className="feature-card-content"><div className="feature-card-top"><span className="feature-number">0{index + 1}</span><feature.icon size={18} /></div><h3>{feature.title}</h3><p>{all ? feature.description : feature.short}</p>{!all && <Link to="/features" className="feature-link" aria-label={`Explore ${feature.title}`}><ArrowUpRight size={19} /></Link>}{all && <span className="capability-label">{feature.tag} · INTENDED CAPABILITY</span>}</div></Reveal>)}</div>;
+  return <div className={`feature-grid ${all ? "feature-grid-all" : "feature-grid-home"}`}>{features.slice(0, all ? 6 : 3).map((feature, index) => <Reveal key={feature.title} className="feature-card" reveal={index === 0 ? "mask" : "rise"}><FeatureArt type={feature.art} /><div className="feature-card-content"><div className="feature-card-top"><span className="feature-number">0{index + 1}</span><feature.icon size={18} /></div><h3>{feature.title}</h3><p>{all ? feature.description : feature.short}</p>{!all && <Link to="/features" className="feature-link" aria-label={`Explore ${feature.title}`}><ArrowUpRight size={19} /></Link>}{all && <span className="capability-label">{feature.tag} · INTENDED CAPABILITY</span>}</div></Reveal>)}</div>;
 }
 export function PosterStage() {
   return <section className="poster-stage" aria-labelledby="poster-stage-title">

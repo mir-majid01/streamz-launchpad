@@ -6,7 +6,7 @@ export const faqs = [
   { question: "Will StreamZ support offline downloads?", answer: "Offline downloads are an intended capability. Availability, eligibility and any limitations will need to be confirmed in the actual app release.", category: "Features" },
   { question: "Is StreamZ available on Google Play?", answer: "Store availability has not been confirmed. This prototype does not include a Play Store listing or store badge.", category: "Download" },
   { question: "The APK download is not starting. What should I do?", answer: "If you see the not-configured message, a verified APK has not been connected yet. Once a release is available, check your connection, available device storage and browser download permissions. Do not download replacement files from unverified sources.", category: "Troubleshooting" },
-  { question: "How can I contact support?", answer: "Use the email link on this page. support@example.com is a placeholder address for this prototype and must be replaced with the real support contact before launch. Do not send personal or sensitive information to it.", category: "General" },
+  { question: "How can I contact support?", answer: "Email streamzz.official@gmail.com or message @Mirmajid01 on Telegram at https://t.me/Mirmajid01. Please avoid sending personal or sensitive information.", category: "General" },
 ];
 
 export function searchFaq(query: string) {
