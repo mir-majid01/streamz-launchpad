@@ -11,6 +11,7 @@ export const site = {
   name: "StreamZ",
   supportEmail: "streamzz.official@gmail.com",
   telegram: verifiedTelegram,
+  telegramUrl: verifiedTelegram.url,
   apkUrl: STREAMZ_APK_URL,
   release: {
     version: "",
