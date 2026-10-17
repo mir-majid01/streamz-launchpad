@@ -1,8 +1,9 @@
 # StreamZ Launchpad
 
-Build a polished, high-detail, multi-page marketing website template for my Android app StreamZ. This is a design test/prototype; do NOT build any streaming player, content catalogue, authentication, database, or backend.
+Build a polished, high-detail, multi-page marketing website template for my Android app StreamZ. This is a design test/prototype; do NOT build any streaming player, connected content catalogue, authentication, database, or backend.
 
 DESIGN DIRECTION
+
 - Premium cinematic dark interface, visually distinctive and art-directed rather than generic AI/SaaS.
 - Background near-black (#070506 / #08090D), restrained signal-red accent (#FF3048 / #E50914), cool silver text, occasional atmospheric red gradients and soft glows.
 - Bold editorial typography (Space Grotesk headings, DM Sans body), deliberate type scale, strong whitespace, fine hairline borders, rounded but not over-rounded cards.
@@ -12,16 +13,18 @@ DESIGN DIRECTION
 - No fake ratings, download counts, testimonials, legal claims, fake store badges, or invented product stats. Label any illustrative UI clearly if needed.
 
 MULTI-PAGE ROUTES
+
 1. Home (/): cinematic hero, concise value proposition, app benefit highlights, feature overview, How it works 3 steps, download CTA, FAQ teaser, footer.
-2. Features (/features): six polished feature cards for discovery, Live TV, offline downloads, audio/subtitle options, watchlist, app updates. Present as intended app capabilities, not claims that unverified features already work. No streaming UI or content catalogue.
+2. Features (/features): six polished feature cards for discovery, Live TV, offline downloads, audio/subtitle options, watchlist, app updates. Present as intended app capabilities, not claims that unverified features already work. Poster artwork is a local public-domain editorial sample, not connected playback or an authentic Android screenshot.
 3. Download (/download): dedicated Android download page with phone mockup, requirements section, installation steps and prominent Download APK button.
 4. About (/about): brand story, mission and values; do not invent company history or user numbers.
-5. Support (/support): working client-side searchable FAQ, functional accordions, troubleshooting tips, support contact placeholder clearly set to support@example.com and easy to change in one config file.
+5. Support (/support): working client-side searchable FAQ, functional accordions, troubleshooting tips, and configurable prototype contacts at streamzz.official@gmail.com and Telegram @Mirmajid01.
 6. Privacy (/privacy): well-designed privacy policy TEMPLATE with clear editable placeholder sections and a visible notice saying this is a template and must be replaced with actual practices before publishing. Do not assert unverified data practices.
 7. Terms (/terms): terms template with same editable/legal-draft notice, no claims of legal advice.
-Use a shared responsive header/footer, real route navigation, active-page indication, working mobile menu, functional internal links on every page. Add a custom 404 page.
+   Use a shared responsive header/footer, real route navigation, active-page indication, working mobile menu, functional internal links on every page. Add a custom 404 page.
 
 DOWNLOAD BUTTON BEHAVIOR
+
 - Centralize the APK URL in one obvious config file, such as src/config/site.ts.
 - Use a configurable STREAMZ_APK_URL with a sensible local default /downloads/StreamZ.apk. All download CTAs across the site must use that same URL and trigger a direct file download/open; do not send users to a random homepage or external redirect.
 - If the local APK does not exist or the URL is not configured, show a clear, polished “APK download is not configured yet” message instead of pretending a download succeeded. Make it easy to replace with the real verified release URL later.
@@ -29,6 +32,7 @@ DOWNLOAD BUTTON BEHAVIOR
 - Installation instructions must mention Android may ask the user to authorize installing apps from that source.
 
 FUNCTIONALITY / ENGINEERING
+
 - Build a real frontend app with working page routing and responsive interactions, not a single static screenshot.
 - Use a maintainable shared component structure and central config for brand name, support email, download URL, version info, nav links and social URLs.
 - No dead buttons. For unavailable external/social destinations, omit them or clearly mark them as configurable rather than linking to #.
@@ -37,6 +41,14 @@ FUNCTIONALITY / ENGINEERING
 - Run build/lint checks available in the environment, fix errors, and report actual verification performed.
 - Prioritize exceptionally polished visual design and motion details, but keep the website fast and maintainable.
 - This is a standalone prototype and must not modify any existing StreamZ Android repo.
+
+## Editorial artwork
+
+The Home and Features visuals use a small set of locally stored public-domain
+film posters to make the concept read as an entertainment product without
+pretending that StreamZ has a live catalog. The assets are not playable content
+and their sources, credits, and rights notes are recorded in
+`public/catalog/ATTRIBUTIONS.md`.
 
 This project was built with [Lovable](https://lovable.dev).
 
@@ -50,7 +62,9 @@ Continue developing this project in the [Lovable editor](https://lovable.dev/pro
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Prefer working locally? Use Node.js `24.18.0` from `.nvmrc` and npm. The
+repository also pins Bun `1.2.26` for the Docker build and retains `bun.lock`.
+Install Node with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
 git clone <this-repository-url>
@@ -58,3 +72,19 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+Run the offline-capable project test entry point with:
+
+```sh
+make test
+```
+
+Build and run the reproducible container with:
+
+```sh
+docker build -t streamz-launchpad .
+docker run --rm -p 8080:8080 streamz-launchpad
+```
+
+Then open <http://localhost:8080>. The container runs the Vite development
+server after validating the production build during image creation.
