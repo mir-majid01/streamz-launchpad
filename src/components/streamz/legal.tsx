@@ -1,5 +1,6 @@
 import { TriangleAlert } from "lucide-react";
 import { PageIntro } from "./shared";
+import { site } from "@/config/site";
 export const privacySections = [
   { title: "Who is responsible", text: "[Insert the legal name, address and contact details of the person or organization responsible for the app. Identify any applicable data controller and jurisdiction.]" },
   { title: "Information and collection", text: "[Describe the actual information collected by the app and website, the sources and collection methods. Review device information, analytics, diagnostics, permissions and information submitted by users. Do not claim that no information is collected without verifying all services.]" },
@@ -8,7 +9,7 @@ export const privacySections = [
   { title: "Retention and protection", text: "[State actual retention periods or criteria, deletion procedures and the safeguards in use. Do not promise absolute security or invent certifications.]" },
   { title: "Choices and rights", text: "[Describe applicable privacy rights, how requests are submitted and verified, any required response periods and the relevant supervisory authority. Adapt to the locations where the app will operate.]" },
   { title: "Children and age requirements", text: "[Confirm the intended audience, applicable age requirements and actual treatment of children’s information. Describe any parental-consent process if relevant.]" },
-  { title: "Updates and contact", text: "[Provide the real privacy contact and explain how material policy changes will be communicated. Add the verified effective date. The support email is not a confirmed privacy contact.]" },
+  { title: "Updates and contact", text: `For support, contact ${site.supportEmail} or message ${site.telegram.handle} at ${site.telegramUrl}. Confirm whether these channels are appropriate for privacy requests, identify the responsible entity, explain how policy changes will be shared, and add the verified effective date.` },
 ];
 export const termsSections = [
   { title: "Operator and scope", text: "[Insert the legal operator, contact information and applicable territory. Specify which app and services these terms cover, and the verified effective date.]" },
@@ -18,7 +19,7 @@ export const termsSections = [
   { title: "Downloads and updates", text: "[Explain verified distribution channels, installation requirements, update handling and any applicable availability restrictions. Do not promise release schedules or device compatibility that have not been confirmed.]" },
   { title: "Fees and third-party services", text: "[State whether any charges or subscriptions actually apply. If applicable, explain billing, renewal, cancellation, refunds and third-party terms. Do not invent a pricing model.]" },
   { title: "Responsibilities and limitations", text: "[Describe appropriate obligations, warranties, liability limitations and termination rules. Have these provisions reviewed for the applicable jurisdiction and mandatory consumer protections.]" },
-  { title: "Disputes, changes and contact", text: "[Insert the applicable governing law and valid dispute procedures. Explain how terms may change and provide a real legal contact. Have this section reviewed before publication.]" },
+  { title: "Disputes, changes and contact", text: `Insert the applicable governing law and valid dispute procedures. For support, contact ${site.supportEmail} or message @Mirmajid01 at ${site.telegramUrl}; confirm whether these channels are appropriate for legal notices. Explain how terms may change and have this section reviewed before publication.` },
 ];
 export function LegalPage({ type }: { type: "privacy" | "terms" }) {
   const sections = type === "privacy" ? privacySections : termsSections;

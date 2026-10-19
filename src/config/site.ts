@@ -12,6 +12,7 @@ export const site = {
   name: "StreamZ",
   supportEmail: "streamzz.official@gmail.com",
   telegram: verifiedTelegram,
+  telegramUrl: verifiedTelegram.url,
   apkUrl: STREAMZ_APK_URL,
   // Mirrors the v0.1.2 release asset on the StreamZ repo (GitHub API, 2026-10-19).
   release: {
