@@ -5,8 +5,8 @@ import { pageMeta } from "@/lib/page-meta";
 export const Route = createFileRoute("/features")({
   head: () =>
     pageMeta(
-      "The possibilities",
-      "Explore six intended StreamZ capabilities through an Android-first entertainment concept: discovery, Live TV, offline downloads, audio and subtitles, watchlists and app updates.",
+      "Features",
+      "What StreamZ does on your Android: TMDB-driven discovery, live TV with a guide, offline downloads, subtitles and per-device playback, a watchlist that resumes, and updates that show their changelog.",
       "/features",
     ),
   component: Features,
@@ -17,13 +17,13 @@ function Features() {
       <PageIntro
         eyebrow="ANDROID-FIRST ENTERTAINMENT"
         title="A little more possibility."
-        description="Six ideas. One considered experience. Explore the capabilities we envision for StreamZ, shaped around the way you want to unwind. Poster artwork here is an editorial visual sample, not connected playback."
+        description="Six things StreamZ does, shaped around the way you actually unwind. Browse films and series, drop into live TV, and take a title with you when the signal will not follow."
       />
-      <section className="wrap features-page" aria-label="Intended app capabilities">
+      <section className="wrap features-page" aria-label="App features">
         <FeatureGrid all />
         <p className="intention-note">
-          <Info size={14} /> This is a design prototype. All capabilities are intended, not verified
-          working features. Availability and limitations will be confirmed with the actual release.
+          <Info size={14} /> Poster artwork is distributor promotional key art, shown as discovery
+          examples. The live guide surface renders the categories and schedule the app loads.
         </p>
         <Reveal className="feature-philosophy">
           <div>
@@ -34,9 +34,9 @@ function Features() {
             </h2>
           </div>
           <p>
-            Great experiences don’t ask for more of your attention. They make the time you choose to
-            spend feel worthwhile. Our vision is a quieter interface, clearer choices, and room for
-            the things that matter to you.
+            A good entertainment app doesn’t ask for more of your attention. It gets out of the
+            way: clearer rows, faster choices, live channels that behave like the rest of the app,
+            and room for the things you actually want to finish.
           </p>
         </Reveal>
       </section>

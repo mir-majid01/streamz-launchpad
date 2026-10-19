@@ -161,7 +161,7 @@ export function Footer() {
             <br />
             Made for your Android.
           </p>
-          <span className="footer-prototype">AN INDEPENDENT DESIGN PROTOTYPE</span>
+          <span className="footer-prototype">ANDROID ENTERTAINMENT APP</span>
         </div>
         <div className="footer-column">
           <h3>EXPLORE</h3>
@@ -181,7 +181,7 @@ export function Footer() {
             {site.supportEmail}
             <ArrowUpRight size={14} aria-hidden="true" />
           </a>
-          <span>Prototype contact channels only.</span>
+          <span>Support via email and Telegram.</span>
           {site.socials.map((social) => (
             <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer">
               {social.label} {social.handle}
@@ -192,7 +192,7 @@ export function Footer() {
       </div>
       <div className="wrap footer-bottom">
         <span>
-          © {new Date().getFullYear()} {site.name}. Design prototype.
+          © {new Date().getFullYear()} {site.name}. All rights reserved.
         </span>
         <span>
           <span className="tiny-signal" /> A LITTLE DIFFERENT. BY DESIGN.

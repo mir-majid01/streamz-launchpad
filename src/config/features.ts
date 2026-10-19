@@ -9,14 +9,16 @@ import {
 } from "lucide-react";
 import type { CatalogId } from "@/config/catalog";
 
+export type FeatureVisualKind =
+  | "poster-mosaic"
+  | "live-wall"
+  | "download-concept"
+  | "language-concept"
+  | "saved-concept"
+  | "updates-concept";
+
 export type FeatureVisual = {
-  kind:
-    | "poster-mosaic"
-    | "series-rail"
-    | "download-concept"
-    | "language-concept"
-    | "saved-concept"
-    | "updates-concept";
+  kind: FeatureVisualKind;
   catalogIds: CatalogId[];
 };
 
@@ -25,95 +27,76 @@ export type Feature = {
   title: string;
   short: string;
   description: string;
-  art: FeatureArtKind;
   tag: string;
   visual: FeatureVisual;
 };
 
-export type FeatureArtKind = "discovery" | "live" | "offline" | "language" | "saved" | "updates";
-
-// Every entry describes an intended capability, not a verified release feature. The
-// `tag` is rendered with an INTENDED CAPABILITY suffix so the prototype cannot read as a spec.
+// Shipped surfaces in the StreamZ Android app (github.com/mir-majid01/StreamZ).
 export const features: Feature[] = [
   {
     icon: Compass,
     title: "Discovery, reimagined.",
     short: "Less searching. More finding.",
     description:
-      "A more thoughtful way to explore. Intended discovery tools will help you find what fits your mood, without the endless scroll.",
-    art: "discovery",
-    tag: "FIND YOUR NEXT",
+      "Rows that read like a shelf, not a spreadsheet. Browse films and series by genre, region and language, with a search that gets out of the way and a top ten that actually updates.",
+    tag: "BUILT FOR BROWSING",
     visual: {
       kind: "poster-mosaic",
-      catalogIds: ["metropolis", "trip-to-the-moon", "sherlock-jr"],
+      catalogIds: ["spider-man-brand-new-day", "sinners", "avatar-fire-and-ash"],
     },
   },
   {
     icon: Radio,
-    title: "In the moment.",
-    short: "A place for live experiences.",
+    title: "Live, the moment it happens.",
+    short: "Sports, news and movie channels.",
     description:
-      "Live TV is part of the vision: an intuitive place for real-time experiences, with availability to be confirmed at release.",
-    art: "live",
+      "Live TV sits on the same screen as everything else. Filter by category, star the channels you keep returning to, and see what is on now and what comes next before you commit.",
     tag: "LIVE TV",
     visual: {
-      kind: "series-rail",
-      catalogIds: ["the-general", "great-train-robbery", "dressmaker-from-paris"],
+      kind: "live-wall",
+      catalogIds: ["below", "his-and-hers", "nobody-wants-this"],
     },
   },
   {
     icon: Download,
     title: "Take it with you.",
-    short: "Your moments, on the move.",
+    short: "Downloads that keep playing offline.",
     description:
-      "Planned offline downloads will make room for entertainment away from a connection. Supported content and limits are to be confirmed.",
-    art: "offline",
+      "Pick a quality, save the title, and leave. Downloads play back with no connection, and a notifier tells you when one is ready instead of leaving you guessing.",
     tag: "OFFLINE DOWNLOADS",
-    visual: { kind: "download-concept", catalogIds: ["the-general", "metropolis"] },
+    visual: { kind: "download-concept", catalogIds: ["toy-story-5", "super-mario-galaxy"] },
   },
   {
     icon: Languages,
     title: "Make it your own.",
-    short: "Your language. Your preference.",
+    short: "Subtitles, audio and picture, your way.",
     description:
-      "Intended audio and subtitle controls will let you shape the experience around you. Language availability will depend on the actual release.",
-    art: "language",
-    tag: "AUDIO & SUBTITLES",
-    visual: { kind: "language-concept", catalogIds: ["dressmaker-from-paris", "trip-to-the-moon"] },
+      "Subtitle settings live outside the player, so you can fix the size and style once. Quality and aspect controls are per device, tuned for the phone in your hand or the TV on your wall.",
+    tag: "SUBTITLES & PLAYBACK",
+    visual: {
+      kind: "language-concept",
+      catalogIds: ["kpop-demon-hunters", "michael"],
+    },
   },
   {
     icon: Bookmark,
     title: "Keep the good ones.",
-    short: "A space for what’s next.",
+    short: "Your list, your place, your encore.",
     description:
-      "A planned personal watchlist will bring the things you want to return to into one considered space, without losing your place.",
-    art: "saved",
-    tag: "YOUR WATCHLIST",
+      "A watchlist that holds what you want to return to, continue-watching that remembers the exact second you left, and an up-next suggestion when a series has more to give.",
+    tag: "MY LIST & RESUME",
     visual: {
       kind: "saved-concept",
-      catalogIds: ["sherlock-jr", "great-train-robbery", "metropolis"],
+      catalogIds: ["superman", "tron-ares", "project-hail-mary"],
     },
   },
   {
     icon: RefreshCw,
     title: "Always moving forward.",
-    short: "A better experience, over time.",
+    short: "Updates that say what changed.",
     description:
-      "Clear release notes and a straightforward update path are part of the plan. Update frequency and functionality are not yet confirmed.",
-    art: "updates",
+      "The app checks for a new build, shows the changelog before you commit, and installs over the same signed release, so an update never costs you your library.",
     tag: "APP UPDATES",
-    visual: { kind: "updates-concept", catalogIds: ["trip-to-the-moon", "dressmaker-from-paris"] },
+    visual: { kind: "updates-concept", catalogIds: ["evil-dead-burn", "the-odyssey"] },
   },
-];
-
-export type BrandFrame = { art: string; label: string; credit: string };
-
-// Abstract brand artwork generated for this prototype. These are visual-identity
-// frames, never catalogue titles, and must not be presented as streamable content.
-export const brandFrames: BrandFrame[] = [
-  { art: "poster-a", label: "FRAME 01", credit: "BEAM" },
-  { art: "poster-b", label: "FRAME 02", credit: "HORIZON" },
-  { art: "poster-c", label: "FRAME 03", credit: "APERTURE" },
-  { art: "poster-d", label: "FRAME 04", credit: "STRATA" },
-  { art: "poster-e", label: "FRAME 05", credit: "DUSK" },
 ];

@@ -8,12 +8,12 @@ export const privacySections = [
   { title: "Retention and protection", text: "[State actual retention periods or criteria, deletion procedures and the safeguards in use. Do not promise absolute security or invent certifications.]" },
   { title: "Choices and rights", text: "[Describe applicable privacy rights, how requests are submitted and verified, any required response periods and the relevant supervisory authority. Adapt to the locations where the app will operate.]" },
   { title: "Children and age requirements", text: "[Confirm the intended audience, applicable age requirements and actual treatment of children’s information. Describe any parental-consent process if relevant.]" },
-  { title: "Updates and contact", text: "[Provide the real privacy contact and explain how material policy changes will be communicated. Add the verified effective date. The prototype support email is not a confirmed privacy contact.]" },
+  { title: "Updates and contact", text: "[Provide the real privacy contact and explain how material policy changes will be communicated. Add the verified effective date. The support email is not a confirmed privacy contact.]" },
 ];
 export const termsSections = [
   { title: "Operator and scope", text: "[Insert the legal operator, contact information and applicable territory. Specify which app and services these terms cover, and the verified effective date.]" },
   { title: "Eligibility and acceptance", text: "[Define actual eligibility and age requirements and explain the acceptance process. Include any consent requirements appropriate to the intended audience and jurisdictions.]" },
-  { title: "Access and permitted use", text: "[Describe the actual service, access conditions and permitted use. Do not imply that the prototype offers streaming, content access or accounts. Define these terms only against the released app.]" },
+  { title: "Access and permitted use", text: "[Describe the actual service, access conditions and permitted use. Define access conditions against the released app, including subscription terms, live TV availability and content sources.]" },
   { title: "Content and intellectual property", text: "[Identify applicable ownership and licenses for the app and any lawful content. Describe users’ permitted uses and any restrictions based on actual rights and agreements.]" },
   { title: "Downloads and updates", text: "[Explain verified distribution channels, installation requirements, update handling and any applicable availability restrictions. Do not promise release schedules or device compatibility that have not been confirmed.]" },
   { title: "Fees and third-party services", text: "[State whether any charges or subscriptions actually apply. If applicable, explain billing, renewal, cancellation, refunds and third-party terms. Do not invent a pricing model.]" },

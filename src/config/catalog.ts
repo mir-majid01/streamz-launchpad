@@ -1,56 +1,9 @@
-export type CatalogAttribution = {
-  filePage: string;
-  sourceUrl: string;
-  rights: string;
+export type PosterSource = {
+  articleUrl: string;
+  fileUrl: string;
   credit: string;
+  rights: string;
 };
-
-export const catalogAttributions = {
-  metropolis: {
-    filePage:
-      "https://commons.wikimedia.org/wiki/File:Boris_Bilinski_(1900-1948)_Plakat_f%C3%BCr_den_Film_Metropolis_(1).jpg",
-    sourceUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/b/bf/Boris_Bilinski_%281900-1948%29_Plakat_f%C3%BCr_den_Film_Metropolis_%281%29.jpg",
-    rights: "Public domain",
-    credit: "Boris Konstantinovitch Bilinsky",
-  },
-  general: {
-    filePage: "https://commons.wikimedia.org/wiki/File:The_General_(1926)_-_Movie_Poster.png",
-    sourceUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/3/36/The_General_%281926%29_-_Movie_Poster.png",
-    rights: "Public domain / PD US expired",
-    credit: "United Artists Corporation",
-  },
-  sherlockJr: {
-    filePage: "https://commons.wikimedia.org/wiki/File:Sherlock_jr_poster.jpg",
-    sourceUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c1/Sherlock_jr_poster.jpg",
-    rights: "Public domain / PD US expired",
-    credit: "Unknown author",
-  },
-  tripToTheMoon: {
-    filePage: "https://commons.wikimedia.org/wiki/File:Trip-to-moon-1902.jpg",
-    sourceUrl: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Trip-to-moon-1902.jpg",
-    rights: "Public domain / PD-Art / CC-PD-Mark",
-    credit: "Georges Méliès",
-  },
-  greatTrainRobbery: {
-    filePage:
-      "https://commons.wikimedia.org/wiki/File:The_Great_Train_Robbery,_Edwin_S._Porter,_Edison_Films,_1903_Poster.jpg",
-    sourceUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/5/51/The_Great_Train_Robbery%2C_Edwin_S._Porter%2C_Edison_Films%2C_1903_Poster.jpg",
-    rights: "Public domain / PD-old-80-expired / CC-PD-Mark",
-    credit: "Unknown author",
-  },
-  dressmakerFromParis: {
-    filePage: "https://commons.wikimedia.org/wiki/File:Dressmaker_From_Paris_poster.jpg",
-    sourceUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/6/6c/Dressmaker_From_Paris_poster.jpg",
-    rights: "Public domain / PD US expired",
-    credit: "Paramount Pictures",
-  },
-} satisfies Record<string, CatalogAttribution>;
-
-export type CatalogAttributionKey = keyof typeof catalogAttributions;
 
 export type CatalogItem = {
   id: string;
@@ -60,69 +13,257 @@ export type CatalogItem = {
   genre: string;
   poster: string;
   alt: string;
-  attributionKey: CatalogAttributionKey;
+  sourceKey: PosterSourceKey;
 };
+
+// Distributor-owned promotional key art, stored locally under public/catalog/trending.
+// See public/catalog/ATTRIBUTIONS.md: displaying this art needs publisher permission, so
+// every record keeps its source page for a licensed swap.
+export const posterSources = {
+  "spider-man-brand-new-day": {
+    articleUrl: "https://en.wikipedia.org/wiki/Spider-Man:_Brand_New_Day",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/9/9a/Spider-Man_Brand_New_Day_poster.jpg",
+    credit: "Marvel Studios / Sony Pictures",
+    rights: "Copyright held by the distributor",
+  },
+  "the-odyssey": {
+    articleUrl: "https://en.wikipedia.org/wiki/The_Odyssey_(2026_film)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/9/90/The_Odyssey_%282026_film%29_poster.jpg",
+    credit: "Universal Pictures",
+    rights: "Copyright held by the distributor",
+  },
+  "toy-story-5": {
+    articleUrl: "https://en.wikipedia.org/wiki/Toy_Story_5",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/0/08/Toy_Story_5_poster.jpg",
+    credit: "Pixar / Disney",
+    rights: "Copyright held by the distributor",
+  },
+  "super-mario-galaxy": {
+    articleUrl: "https://en.wikipedia.org/wiki/The_Super_Mario_Galaxy_Movie",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/b/bf/The_Super_Mario_Galaxy_Movie_poster.jpeg",
+    credit: "Nintendo / Universal Pictures",
+    rights: "Copyright held by the distributor",
+  },
+  "project-hail-mary": {
+    articleUrl: "https://en.wikipedia.org/wiki/Project_Hail_Mary_(film)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/3/3b/Project_Hail_Mary_poster.jpg",
+    credit: "Amazon MGM Studios",
+    rights: "Copyright held by the distributor",
+  },
+  "evil-dead-burn": {
+    articleUrl: "https://en.wikipedia.org/wiki/Evil_Dead_Burn",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/a/a4/Evil_Dead_Burn_poster.jpeg",
+    credit: "Ghost House Pictures / Universal",
+    rights: "Copyright held by the distributor",
+  },
+  michael: {
+    articleUrl: "https://en.wikipedia.org/wiki/Michael_(2026_film)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/3/37/Michael_%282026_film_poster%29.png",
+    credit: "Lionsgate",
+    rights: "Copyright held by the distributor",
+  },
+  "avatar-fire-and-ash": {
+    articleUrl: "https://en.wikipedia.org/wiki/Avatar:_Fire_and_Ash",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/9/95/Avatar_Fire_and_Ash_poster.jpeg",
+    credit: "20th Century Studios / Disney",
+    rights: "Copyright held by the distributor",
+  },
+  sinners: {
+    articleUrl: "https://en.wikipedia.org/wiki/Sinners_(2025_film)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/5/5f/Sinners_%282025_film%29_poster.jpg",
+    credit: "Warner Bros. Pictures",
+    rights: "Copyright held by the distributor",
+  },
+  superman: {
+    articleUrl: "https://en.wikipedia.org/wiki/Superman_(2025_film)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/3/32/Superman_%282025_film%29_poster.jpg",
+    credit: "DC Studios / Warner Bros. Pictures",
+    rights: "Copyright held by the distributor",
+  },
+  "tron-ares": {
+    articleUrl: "https://en.wikipedia.org/wiki/Tron:_Ares",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/0/06/Tron_Ares_poster.jpg",
+    credit: "Disney",
+    rights: "Copyright held by the distributor",
+  },
+  "kpop-demon-hunters": {
+    articleUrl: "https://en.wikipedia.org/wiki/KPop_Demon_Hunters",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/9/93/KPDHposter.jpeg",
+    credit: "Sony Pictures Animation / Netflix",
+    rights: "Copyright held by the distributor",
+  },
+  below: {
+    articleUrl: "https://en.wikipedia.org/wiki/Below_(TV_series)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/7/73/Below_%282026%29_poster.jpg",
+    credit: "Netflix",
+    rights: "Copyright held by the distributor",
+  },
+  "nobody-wants-this": {
+    articleUrl: "https://en.wikipedia.org/wiki/Nobody_Wants_This",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/3/3d/Nobody_Wants_This_Season_1_%282024%29_poster.jpg",
+    credit: "Netflix",
+    rights: "Copyright held by the distributor",
+  },
+  "his-and-hers": {
+    articleUrl: "https://en.wikipedia.org/wiki/His_%26_Hers_(TV_series)",
+    fileUrl: "https://upload.wikimedia.org/wikipedia/en/3/3e/His_And_Hers_Netflix_series_poster.jpeg",
+    credit: "Netflix",
+    rights: "Copyright held by the distributor",
+  },
+} satisfies Record<string, PosterSource>;
+
+export type PosterSourceKey = keyof typeof posterSources;
 
 export const catalog = [
   {
-    id: "metropolis",
-    title: "Metropolis",
+    id: "spider-man-brand-new-day",
+    title: "Spider-Man: Brand New Day",
     kind: "movie",
-    year: "1927",
-    genre: "Science fiction",
-    poster: "/catalog/metropolis.jpg",
-    alt: "Public-domain poster artwork for Metropolis",
-    attributionKey: "metropolis",
+    year: "2026",
+    genre: "Action",
+    poster: "/catalog/trending/spider-man-brand-new-day.jpg",
+    alt: "Poster artwork for Spider-Man: Brand New Day",
+    sourceKey: "spider-man-brand-new-day",
   },
   {
-    id: "the-general",
-    title: "The General",
+    id: "the-odyssey",
+    title: "The Odyssey",
     kind: "movie",
-    year: "1926",
-    genre: "Silent comedy",
-    poster: "/catalog/the-general.png",
-    alt: "Public-domain poster artwork for The General",
-    attributionKey: "general",
+    year: "2026",
+    genre: "Epic",
+    poster: "/catalog/trending/the-odyssey.jpg",
+    alt: "Poster artwork for The Odyssey",
+    sourceKey: "the-odyssey",
   },
   {
-    id: "sherlock-jr",
-    title: "Sherlock Jr.",
+    id: "toy-story-5",
+    title: "Toy Story 5",
     kind: "movie",
-    year: "1924",
-    genre: "Silent comedy",
-    poster: "/catalog/sherlock-jr.jpg",
-    alt: "Public-domain poster artwork for Sherlock Jr.",
-    attributionKey: "sherlockJr",
+    year: "2026",
+    genre: "Animation",
+    poster: "/catalog/trending/toy-story-5.jpg",
+    alt: "Poster artwork for Toy Story 5",
+    sourceKey: "toy-story-5",
   },
   {
-    id: "trip-to-the-moon",
-    title: "A Trip to the Moon",
+    id: "super-mario-galaxy",
+    title: "The Super Mario Galaxy Movie",
     kind: "movie",
-    year: "1902",
-    genre: "Fantasy adventure",
-    poster: "/catalog/trip-to-the-moon.jpg",
-    alt: "Public-domain poster artwork for A Trip to the Moon",
-    attributionKey: "tripToTheMoon",
+    year: "2026",
+    genre: "Animation",
+    poster: "/catalog/trending/super-mario-galaxy.jpg",
+    alt: "Poster artwork for The Super Mario Galaxy Movie",
+    sourceKey: "super-mario-galaxy",
   },
   {
-    id: "great-train-robbery",
-    title: "The Great Train Robbery",
+    id: "project-hail-mary",
+    title: "Project Hail Mary",
     kind: "movie",
-    year: "1903",
-    genre: "Western drama",
-    poster: "/catalog/great-train-robbery.jpg",
-    alt: "Public-domain poster artwork for The Great Train Robbery",
-    attributionKey: "greatTrainRobbery",
+    year: "2026",
+    genre: "Sci-fi",
+    poster: "/catalog/trending/project-hail-mary.jpg",
+    alt: "Poster artwork for Project Hail Mary",
+    sourceKey: "project-hail-mary",
   },
   {
-    id: "dressmaker-from-paris",
-    title: "The Dressmaker from Paris",
+    id: "evil-dead-burn",
+    title: "Evil Dead Burn",
     kind: "movie",
-    year: "1925",
-    genre: "Romantic comedy",
-    poster: "/catalog/dressmaker-from-paris.jpg",
-    alt: "Public-domain poster artwork for The Dressmaker from Paris",
-    attributionKey: "dressmakerFromParis",
+    year: "2026",
+    genre: "Horror",
+    poster: "/catalog/trending/evil-dead-burn.jpg",
+    alt: "Poster artwork for Evil Dead Burn",
+    sourceKey: "evil-dead-burn",
+  },
+  {
+    id: "michael",
+    title: "Michael",
+    kind: "movie",
+    year: "2026",
+    genre: "Biopic",
+    poster: "/catalog/trending/michael.png",
+    alt: "Poster artwork for Michael",
+    sourceKey: "michael",
+  },
+  {
+    id: "avatar-fire-and-ash",
+    title: "Avatar: Fire and Ash",
+    kind: "movie",
+    year: "2025",
+    genre: "Sci-fi",
+    poster: "/catalog/trending/avatar-fire-and-ash.jpg",
+    alt: "Poster artwork for Avatar: Fire and Ash",
+    sourceKey: "avatar-fire-and-ash",
+  },
+  {
+    id: "sinners",
+    title: "Sinners",
+    kind: "movie",
+    year: "2025",
+    genre: "Horror",
+    poster: "/catalog/trending/sinners.jpg",
+    alt: "Poster artwork for Sinners",
+    sourceKey: "sinners",
+  },
+  {
+    id: "superman",
+    title: "Superman",
+    kind: "movie",
+    year: "2025",
+    genre: "Action",
+    poster: "/catalog/trending/superman.jpg",
+    alt: "Poster artwork for Superman",
+    sourceKey: "superman",
+  },
+  {
+    id: "tron-ares",
+    title: "Tron: Ares",
+    kind: "movie",
+    year: "2025",
+    genre: "Sci-fi",
+    poster: "/catalog/trending/tron-ares.jpg",
+    alt: "Poster artwork for Tron: Ares",
+    sourceKey: "tron-ares",
+  },
+  {
+    id: "kpop-demon-hunters",
+    title: "KPop Demon Hunters",
+    kind: "movie",
+    year: "2025",
+    genre: "Animation",
+    poster: "/catalog/trending/kpop-demon-hunters.jpg",
+    alt: "Poster artwork for KPop Demon Hunters",
+    sourceKey: "kpop-demon-hunters",
+  },
+  {
+    id: "below",
+    title: "Below",
+    kind: "series",
+    year: "2026",
+    genre: "Thriller",
+    poster: "/catalog/trending/below.jpg",
+    alt: "Poster artwork for the series Below",
+    sourceKey: "below",
+  },
+  {
+    id: "nobody-wants-this",
+    title: "Nobody Wants This",
+    kind: "series",
+    year: "2024",
+    genre: "Comedy",
+    poster: "/catalog/trending/nobody-wants-this.jpg",
+    alt: "Poster artwork for the series Nobody Wants This",
+    sourceKey: "nobody-wants-this",
+  },
+  {
+    id: "his-and-hers",
+    title: "His & Hers",
+    kind: "series",
+    year: "2026",
+    genre: "Thriller",
+    poster: "/catalog/trending/his-and-hers.jpg",
+    alt: "Poster artwork for the series His & Hers",
+    sourceKey: "his-and-hers",
   },
 ] satisfies CatalogItem[];
 

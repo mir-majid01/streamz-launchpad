@@ -59,7 +59,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "StreamZ — A new perspective" },
-      { name: "description", content: "StreamZ Android app design prototype." },
+      { name: "description", content: "StreamZ — films, series and live TV for Android. Films, series and live channels in one app, with offline downloads and a live guide." },
       { property: "og:site_name", content: "StreamZ" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

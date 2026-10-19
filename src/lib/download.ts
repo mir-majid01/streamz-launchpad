@@ -1,17 +1,34 @@
+export type ApkStatus = "available" | "missing" | "unverifiable";
+
 export const APK_NOT_CONFIGURED = "APK download is not configured yet";
 
-export async function verifyApk(url: string, fetcher: typeof fetch = fetch): Promise<boolean> {
-  if (!url.trim()) return false;
+function isRelative(url: string): boolean {
+  return !/^https?:\/\//i.test(url);
+}
+
+export async function verifyApk(url: string, fetcher: typeof fetch = fetch): Promise<ApkStatus> {
+  if (!url.trim()) return "missing";
+  let parsed: URL;
   try {
-    const parsed = new URL(url, "https://streamz.example");
-    if (!["http:", "https:"].includes(parsed.protocol)) return false;
-    const response = await fetcher(url, { method: "HEAD", cache: "no-store" });
-    if (!response.ok) return false;
-    const type = response.headers.get("content-type")?.toLowerCase() || "";
-    // A missing file can return a successful HTML SPA fallback; reject it.
-    return !type.includes("text/html") && !type.includes("application/json");
+    parsed = new URL(url, "https://streamz.example");
   } catch {
-    // A release host must allow the availability check; never report false success.
-    return false;
+    return "missing";
   }
+  if (!["http:", "https:"].includes(parsed.protocol)) return "missing";
+  // A relative path is served by this app, so a missing file can come back as a
+  // successful HTML SPA fallback. An absolute release URL lives on someone else's
+  // host, where CORS usually refuses the probe without saying anything about the file.
+  try {
+    const response = await fetcher(url, { method: "HEAD", cache: "no-store" });
+    if (!response.ok) return "missing";
+    const type = response.headers.get("content-type")?.toLowerCase() || "";
+    if (type.includes("text/html") || type.includes("application/json")) return "missing";
+    return "available";
+  } catch {
+    return isRelative(url) ? "missing" : "unverifiable";
+  }
+}
+
+export function isReady(status: ApkStatus): boolean {
+  return status === "available" || status === "unverifiable";
 }

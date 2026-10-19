@@ -7,7 +7,7 @@ DESIGN DIRECTION
 - Premium cinematic dark interface, visually distinctive and art-directed rather than generic AI/SaaS.
 - Background near-black (#070506 / #08090D), restrained signal-red accent (#FF3048 / #E50914), cool silver text, occasional atmospheric red gradients and soft glows.
 - Bold editorial typography (Space Grotesk headings, DM Sans body), deliberate type scale, strong whitespace, fine hairline borders, rounded but not over-rounded cards.
-- Hero: oversized StreamZ wordmark with red Z, concise headline, primary Download for Android CTA and secondary Explore Features CTA. Create a striking original abstract cinematic background using layered gradients, subtle grain, glows, CSS shapes and motion—not copied film posters or copyrighted franchise imagery. Include a tasteful CSS/illustrative Android phone mockup showing generic app UI, not a real streaming interface.
+- Hero: oversized StreamZ wordmark with red Z, concise headline, primary Download for Android CTA and secondary Explore Features CTA. Build the background from layered gradients, subtle grain, glows, CSS shapes and motion. Include a CSS/illustrative Android phone mockup with home and live-guide screens.
 - Motion quality matters: staggered page entrance, scroll-reveal sections, subtle parallax/ambient background drift, polished hover/focus states, button micro-interactions, animated underline/nav state, accordions with smooth open/close, and tasteful route transitions. Use CSS/Framer Motion only where appropriate; respect prefers-reduced-motion and avoid heavy effects that hurt mobile performance.
 - Responsive and accessible on mobile, tablet, desktop; proper keyboard focus, semantic landmarks, contrast, reduced-motion support, no layout overflow.
 - No fake ratings, download counts, testimonials, legal claims, fake store badges, or invented product stats. Label any illustrative UI clearly if needed.
@@ -15,8 +15,9 @@ DESIGN DIRECTION
 MULTI-PAGE ROUTES
 
 1. Home (/): cinematic hero, concise value proposition, app benefit highlights, feature overview, How it works 3 steps, download CTA, FAQ teaser, footer.
-2. Features (/features): six polished feature cards for discovery, Live TV, offline downloads, audio/subtitle options, watchlist, app updates. Present as intended app capabilities, not claims that unverified features already work. Poster artwork is a local public-domain editorial sample, not connected playback or an authentic Android screenshot.
-3. Download (/download): dedicated Android download page with phone mockup, requirements section, installation steps and prominent Download APK button.
+2. Features (/features): six polished feature cards for discovery, Live TV, offline downloads, subtitles and playback, my list, app updates. Poster artwork is distributor promotional key art used as discovery examples, not an authentic Android screenshot. See “Catalogue artwork” below.
+3. Download (/download): dedicated Android download page with phone mockup, verified release panel, requirements section, installation steps and prominent Download APK button.
+3b. Live TV (/live-tv): channel wall, guide surfaces and Live TV FAQs.
 4. About (/about): brand story, mission and values; do not invent company history or user numbers.
 5. Support (/support): working client-side searchable FAQ, functional accordions, troubleshooting tips, and configurable prototype contacts at streamzz.official@gmail.com and Telegram @Mirmajid01.
 6. Privacy (/privacy): well-designed privacy policy TEMPLATE with clear editable placeholder sections and a visible notice saying this is a template and must be replaced with actual practices before publishing. Do not assert unverified data practices.
@@ -42,13 +43,30 @@ FUNCTIONALITY / ENGINEERING
 - Prioritize exceptionally polished visual design and motion details, but keep the website fast and maintainable.
 - This is a standalone prototype and must not modify any existing StreamZ Android repo.
 
-## Editorial artwork
+## Catalogue artwork
 
-The Home and Features visuals use a small set of locally stored public-domain
-film posters to make the concept read as an entertainment product without
-pretending that StreamZ has a live catalog. The assets are not playable content
-and their sources, credits, and rights notes are recorded in
-`public/catalog/ATTRIBUTIONS.md`.
+The Home and Features pages use current film and series posters stored under
+`public/catalog/trending/`. This is distributor-owned promotional key art, not
+public-domain material: `public/catalog/ATTRIBUTIONS.md` records the source page and
+rights holder for every title, and a public commercial launch needs publisher
+permission or a licensed artwork feed (for example a TMDB-keyed build step that
+writes the same local files).
+
+## Live TV
+
+`/live-tv` and the Home Live TV band visualise the app's live guide surface: a
+category-filtered channel wall with now/next state. The category tiles are the guide
+layout, not a published channel line-up; the app loads whatever categories and schedule
+a signed-in device is entitled to.
+
+## Release and download
+
+All download CTAs are plain anchors to `site.apkUrl`, which defaults to the newest
+signed GitHub release asset, so a click starts the file download without navigating away.
+Release metadata in `src/config/site.ts` mirrors the published release asset
+(version, size, SHA-256 digest, date, package id). `verifyApk` reports
+`available | missing | unverifiable` and is used only for the status chip on the
+download page — a CORS-blocked probe must never block a real release link.
 
 This project was built with [Lovable](https://lovable.dev).
 

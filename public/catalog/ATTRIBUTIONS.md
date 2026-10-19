@@ -1,64 +1,31 @@
-# StreamZ editorial catalog artwork
+# StreamZ catalogue artwork provenance
 
-These local poster files are used as an editorial visual sample only. They do
-not represent a connected StreamZ catalog and are not playable content.
+Posters under `public/catalog/trending/` are studio promotional key art. They are
+referenced by `src/config/catalog.ts`, which keeps one record per title.
 
-## `metropolis.jpg`
+**Rights status:** the imagery is not public domain. Each distributor below still owns
+it, so a public commercial launch needs publisher permission or a licensed artwork feed.
+The previous 1902–1927 public-domain set was removed on 2026-10-19; it is recoverable
+from git history (`public/catalog/` at commit `56d21e9`).
 
-- Display title: *Metropolis*
-- Media type/year: Movie · 1927
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:Boris_Bilinski_(1900-1948)_Plakat_f%C3%BCr_den_Film_Metropolis_(1).jpg>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/b/bf/Boris_Bilinski_%281900-1948%29_Plakat_f%C3%BCr_den_Film_Metropolis_%281%29.jpg>
-- Artist: Boris Konstantinovitch Bilinsky
-- Rights basis: Public domain (Commons page marks the work `PD-old-auto-expired` / public domain)
-- Attribution: Not required by the listed public-domain basis; artist credited here for provenance.
+| Title | Year | Rights holder | Source page |
+| --- | --- | --- | --- |
+| Spider-Man: Brand New Day | 2026 | Marvel Studios / Sony Pictures | [file page](https://en.wikipedia.org/wiki/File:Spider-Man_Brand_New_Day_poster.jpg) |
+| The Odyssey | 2026 | Universal Pictures | [file page](https://en.wikipedia.org/wiki/File:The_Odyssey_(2026_film)_poster.jpg) |
+| Toy Story 5 | 2026 | Pixar / Disney | [file page](https://en.wikipedia.org/wiki/File:Toy_Story_5_poster.jpg) |
+| The Super Mario Galaxy Movie | 2026 | Nintendo / Universal Pictures | [file page](https://en.wikipedia.org/wiki/File:The_Super_Mario_Galaxy_Movie_poster.jpeg) |
+| Project Hail Mary | 2026 | Amazon MGM Studios | [file page](https://en.wikipedia.org/wiki/File:Project_Hail_Mary_poster.jpg) |
+| Evil Dead Burn | 2026 | Ghost House Pictures / Universal | [file page](https://en.wikipedia.org/wiki/File:Evil_Dead_Burn_poster.jpeg) |
+| Michael | 2026 | Lionsgate | [file page](https://en.wikipedia.org/wiki/File:Michael_(2026_film_poster).png) |
+| Avatar: Fire and Ash | 2025 | 20th Century Studios / Disney | [file page](https://en.wikipedia.org/wiki/File:Avatar_Fire_and_Ash_poster.jpeg) |
+| Sinners | 2025 | Warner Bros. Pictures | [file page](https://en.wikipedia.org/wiki/File:Sinners_(2025_film)_poster.jpg) |
+| Superman | 2025 | DC Studios / Warner Bros. Pictures | [file page](https://en.wikipedia.org/wiki/File:Superman_(2025_film)_poster.jpg) |
+| Tron: Ares | 2025 | Disney | [file page](https://en.wikipedia.org/wiki/File:Tron_Ares_poster.jpg) |
+| KPop Demon Hunters | 2025 | Sony Pictures Animation / Netflix | [file page](https://en.wikipedia.org/wiki/File:KPDHposter.jpeg) |
+| Below | 2026 | Netflix | [file page](https://en.wikipedia.org/wiki/File:Below_(2026)_poster.jpg) |
+| Nobody Wants This | 2024 | Netflix | [file page](https://en.wikipedia.org/wiki/File:Nobody_Wants_This_Season_1_(2024)_poster.jpg) |
+| His & Hers | 2026 | Netflix | [file page](https://en.wikipedia.org/wiki/File:His_And_Hers_Netflix_series_poster.jpeg) |
 
-## `the-general.png`
-
-- Display title: *The General*
-- Media type/year: Movie · 1926
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:The_General_(1926)_-_Movie_Poster.png>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/3/36/The_General_%281926%29_-_Movie_Poster.png>
-- Artist/rights holder: United Artists Corporation
-- Rights basis: Public domain / `PD US expired`
-- Attribution: Not required by the listed public-domain basis; rights holder credited here for provenance.
-
-## `sherlock-jr.jpg`
-
-- Display title: *Sherlock Jr.*
-- Media type/year: Movie · 1924
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:Sherlock_jr_poster.jpg>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/c/c1/Sherlock_jr_poster.jpg>
-- Artist: Unknown author
-- Rights basis: Public domain / `PD US expired`
-- Attribution: Not required by the listed public-domain basis.
-
-## `trip-to-the-moon.jpg`
-
-- Display title: *A Trip to the Moon*
-- Media type/year: Movie · 1902
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:Trip-to-moon-1902.jpg>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/f/fa/Trip-to-moon-1902.jpg>
-- Artist: Georges Méliès
-- Rights basis: Public domain / `PD-Art (PD-old-70)` / `CC-PD-Mark`
-- Attribution: Not required by the listed public-domain basis; Georges Méliès credited here for provenance.
-
-## `great-train-robbery.jpg`
-
-- Display title: *The Great Train Robbery*
-- Media type/year: Movie · 1903
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:The_Great_Train_Robbery,_Edwin_S._Porter,_Edison_Films,_1903_Poster.jpg>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/5/51/The_Great_Train_Robbery%2C_Edwin_S._Porter%2C_Edison_Films%2C_1903_Poster.jpg>
-- Artist: Unknown author
-- Rights basis: Public domain / `PD-old-80-expired` / `CC-PD-Mark`
-- Attribution: Not required by the listed public-domain basis.
-
-## `dressmaker-from-paris.jpg`
-
-- Display title: *The Dressmaker from Paris*
-- Media type/year: Movie · 1925
-- Wikimedia Commons file page: <https://commons.wikimedia.org/wiki/File:Dressmaker_From_Paris_poster.jpg>
-- Downloaded source URL: <https://upload.wikimedia.org/wikipedia/commons/6/6c/Dressmaker_From_Paris_poster.jpg>
-- Artist/rights holder: Paramount Pictures
-- Rights basis: Public domain / `PD US expired`
-- Attribution: Not required by the listed public-domain basis; rights holder credited here for provenance.
+Titles are shown as discovery examples for the interface. The site does not stream or
+host any of this artwork's underlying films, and no playback of these titles is implied
+by the catalogue rails.

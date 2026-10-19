@@ -1,14 +1,6 @@
 import { useEffect, useRef, type HTMLAttributes, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import {
-  ArrowUpRight,
-  ArrowRight,
-  Compass,
-  Download,
-  RefreshCw,
-  Bookmark,
-  Languages,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -18,7 +10,8 @@ import {
 } from "@/components/ui/accordion";
 import { DownloadButton } from "./download-button";
 import { faqs } from "@/config/faq";
-import { brandFrames, features, type FeatureArtKind } from "@/config/features";
+import { features } from "@/config/features";
+import { site } from "@/config/site";
 import { FeatureVisual } from "./catalog";
 
 type RevealStyle = "rise" | "mask" | "scale" | "left" | "right";
@@ -82,56 +75,6 @@ export function PageIntro({
     </section>
   );
 }
-export function FeatureArt({ type }: { type: FeatureArtKind }) {
-  return (
-    <div className={`feature-art art-${type}`} aria-hidden="true">
-      {type === "discovery" ? (
-        <>
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="orbit orbit-three" />
-          <Compass className="art-icon" size={36} />
-        </>
-      ) : type === "live" ? (
-        <>
-          <div className="wave-bars">
-            {Array.from({ length: 19 }, (_, i) => (
-              <i key={i} />
-            ))}
-          </div>
-          <span className="live-pill">
-            <i />
-            IN THE MOMENT
-          </span>
-        </>
-      ) : type === "offline" ? (
-        <>
-          <div className="art-file file-back" />
-          <div className="art-file">
-            <Download size={32} />
-            <div className="download-progress" />
-          </div>
-          <span className="art-small-label">READY WHEN YOU ARE</span>
-        </>
-      ) : type === "language" ? (
-        <>
-          <span className="language-word">Hello.</span>
-          <span className="language-other">Hola. Bonjour. こんにちは.</span>
-        </>
-      ) : type === "saved" ? (
-        <>
-          <div className="saved-stack" />
-          <Bookmark size={45} className="art-icon" />
-        </>
-      ) : (
-        <>
-          <RefreshCw size={48} className="update-icon" />
-          <span className="art-small-label">THE NEXT CHAPTER</span>
-        </>
-      )}
-    </div>
-  );
-}
 export function FeatureGrid({ all = false }: { all?: boolean }) {
   return (
     <div className="feature-grid">
@@ -150,58 +93,11 @@ export function FeatureGrid({ all = false }: { all?: boolean }) {
                 <ArrowUpRight size={19} aria-hidden="true" />
               </Link>
             )}
-            {all && <span className="capability-label">{feature.tag} · INTENDED CAPABILITY</span>}
+            {all && <span className="capability-label">{feature.tag}</span>}
           </div>
         </Reveal>
       ))}
     </div>
-  );
-}
-export function PosterStage() {
-  return (
-    <section className="poster-stage" aria-labelledby="poster-stage-title">
-      <div className="wrap">
-        <Reveal reveal="mask" className="section-head-center">
-          <Eyebrow>THE HOUSE STYLE</Eyebrow>
-          <h2 id="poster-stage-title">
-            Light, grain
-            <br />
-            and negative space.
-          </h2>
-          <p>
-            Abstract frames from the StreamZ visual identity. They show the mood the app is designed
-            around — they are not titles in a catalogue.
-          </p>
-        </Reveal>
-      </div>
-      <Reveal
-        reveal="scale"
-        className="poster-rail-wrap"
-        role="region"
-        aria-label="StreamZ brand artwork frames"
-      >
-        <ul className="poster-rail">
-          {brandFrames.map((frame) => (
-            <li
-              key={frame.label}
-              className={`poster ${frame.art}`}
-              tabIndex={0}
-              aria-label={`${frame.label}, abstract StreamZ brand artwork credited to ${frame.credit}`}
-            >
-              <span className="poster-art" aria-hidden="true" />
-              <span className="poster-sweep" aria-hidden="true" />
-              <span className="poster-tick">
-                <span>{frame.label}</span>
-                <span>{frame.credit}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-      <p className="poster-caption">
-        <span className="tiny-signal" /> ORIGINAL ABSTRACT ARTWORK · NOT CATALOGUE CONTENT
-      </p>
-    </section>
   );
 }
 export function DownloadBand() {
@@ -220,7 +116,7 @@ export function DownloadBand() {
           </h2>
           <p>A new perspective on entertainment. Built for Android.</p>
           <DownloadButton />
-          <span className="release-note">Verified release details coming soon.</span>
+          <span className="release-note">v{site.release.version} · {site.release.size} · Android APK</span>
         </div>
         <span className="band-corner">
           MADE FOR ANDROID <ArrowUpRight size={16} />

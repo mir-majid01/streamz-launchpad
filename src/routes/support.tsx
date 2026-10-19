@@ -11,7 +11,7 @@ export const Route = createFileRoute("/support")({
   head: () =>
     pageMeta(
       "Help & support",
-      "Search StreamZ’s FAQs, find Android installation guidance and troubleshooting tips, and view the prototype support contact.",
+      "Search StreamZ FAQs for Android installation guidance, live TV, downloads and troubleshooting, with the support contacts for the current release.",
       "/support",
     ),
   component: Support,
@@ -72,7 +72,7 @@ function Support() {
         <aside className="support-aside">
           <h2>Still have a question?</h2>
           <p>
-            The contact channels below are for questions about this independent design prototype.
+            The contact channels below are for questions about the StreamZ Android app.
             Please don’t send personal or sensitive information.
           </p>
           <a className="contact-link" href={`mailto:${site.supportEmail}`}>
@@ -89,7 +89,7 @@ function Support() {
             <ArrowUpRight size={17} aria-hidden="true" />
           </a>
           <span className="contact-placeholder">
-            Prototype contact channels only. Please don’t send personal or sensitive information.
+            Please do not send personal or sensitive information in a first message.
           </span>
           <div className="troubleshooting">
             <h3>A few things to check.</h3>

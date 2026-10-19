@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as DownloadRouteImport } from './routes/download'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as LiveTvRouteImport } from './routes/live-tv'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -37,6 +38,11 @@ const FeaturesRoute = FeaturesRouteImport.update({
   path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LiveTvRoute = LiveTvRouteImport.update({
+  id: '/live-tv',
+  path: '/live-tv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/download': typeof DownloadRoute
   '/features': typeof FeaturesRoute
+  '/live-tv': typeof LiveTvRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/download': typeof DownloadRoute
   '/features': typeof FeaturesRoute
+  '/live-tv': typeof LiveTvRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/download': typeof DownloadRoute
   '/features': typeof FeaturesRoute
+  '/live-tv': typeof LiveTvRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/download'
     | '/features'
+    | '/live-tv'
     | '/privacy'
     | '/support'
     | '/terms'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/download'
     | '/features'
+    | '/live-tv'
     | '/privacy'
     | '/support'
     | '/terms'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/download'
     | '/features'
+    | '/live-tv'
     | '/privacy'
     | '/support'
     | '/terms'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   DownloadRoute: typeof DownloadRoute
   FeaturesRoute: typeof FeaturesRoute
+  LiveTvRoute: typeof LiveTvRoute
   PrivacyRoute: typeof PrivacyRoute
   SupportRoute: typeof SupportRoute
   TermsRoute: typeof TermsRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/live-tv': {
+      id: '/live-tv'
+      path: '/live-tv'
+      fullPath: '/live-tv'
+      preLoaderRoute: typeof LiveTvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   DownloadRoute: DownloadRoute,
   FeaturesRoute: FeaturesRoute,
+  LiveTvRoute: LiveTvRoute,
   PrivacyRoute: PrivacyRoute,
   SupportRoute: SupportRoute,
   TermsRoute: TermsRoute,

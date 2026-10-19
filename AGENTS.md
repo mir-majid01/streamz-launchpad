@@ -11,8 +11,8 @@
 
 ## StreamZ frontend architecture
 - Keep this site frontend-only with reusable brand, layout, phone illustration, motion and legal components under src/components/streamz; this isolates presentation from route metadata.
-- Keep brand, navigation, support, social destinations, APK URL and release metadata in src/config/site.ts; one configuration source prevents inconsistent launch details.
-- Route all APK actions through DownloadButton and verifyApk, rejecting unavailable files and HTML fallbacks before invoking a direct download; this prevents false-success downloads on SPA hosts.
-- Keep FAQs and their pure search helper in src/config/faq.ts, and verify release and search rules in src/test/streamz.test.ts; this makes prototype behavior independently testable.
+- Keep brand, navigation, support, social destinations, APK URL and release metadata in src/config/site.ts, with Live TV categories in src/config/live-tv.ts and poster provenance in src/config/catalog.ts; one configuration source prevents inconsistent release details.
+- Route all APK actions through DownloadButton, which renders a plain anchor to site.apkUrl so a click downloads the file without navigating; verifyApk reports available/missing/unverifiable and only drives the status chip, because a CORS-blocked probe must never block a configured release link.
+- Keep FAQs and their pure search helper in src/config/faq.ts, and verify release, catalogue, live TV and search rules in src/test/streamz.test.tsx; this keeps shipped behavior independently testable.
 - Define all visual styling, CSS artwork and motion in src/styles.css using semantic theme tokens; routes compose the design system without inline visual values.
 - Each content route owns its title, description and social metadata while __root owns the shared header/footer and document fonts; this preserves distinct page identity.

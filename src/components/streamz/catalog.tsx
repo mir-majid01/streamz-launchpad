@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Bookmark, Check, Download, Languages, Radio, RefreshCw } from "lucide-react";
 import { catalog, catalogById, type CatalogItem } from "@/config/catalog";
+import { liveCategories } from "@/config/live-tv";
 import type { Feature } from "@/config/features";
 import { Eyebrow, Reveal } from "./shared";
 
@@ -95,24 +96,24 @@ export function CatalogShowcase() {
     <section className="catalog-showcase" aria-labelledby="catalog-showcase-title">
       <div className="wrap">
         <Reveal className="catalog-showcase-heading" reveal="mask">
-          <Eyebrow>EDITORIAL SHOWCASE</Eyebrow>
+          <Eyebrow>TRENDING THIS WEEK</Eyebrow>
           <h2 id="catalog-showcase-title">
-            Find a new
+            What everyone
             <br />
-            point of view.
+            is watching.
           </h2>
           <p>
-            A visual sample of the films and stories StreamZ is designed to help you discover. The
-            prototype has no connected playback or live catalog.
+            The week’s biggest films and series, lined up in one browse. StreamZ sorts them by
+            genre, language and region so the thing you want is the thing you find.
           </p>
         </Reveal>
       </div>
       <Reveal reveal="scale" className="catalog-showcase-rail">
-        <PosterRail items={catalog} label="Editorial film poster showcase" />
+        <PosterRail items={catalog} label="Trending film and series posters" />
       </Reveal>
       <p className="catalog-disclosure">
-        <span className="tiny-signal" /> PUBLIC-DOMAIN EDITORIAL ARTWORK · NOT PLAYABLE IN THIS
-        PROTOTYPE
+        <span className="tiny-signal" /> DISTRIBUTOR PROMOTIONAL KEY ART · SHOWN AS DISCOVERY
+        EXAMPLES
       </p>
     </section>
   );
@@ -144,17 +145,32 @@ export function FeatureVisual({ feature }: { feature: Feature }) {
               className={`mosaic-poster mosaic-poster-${index + 1}`}
             />
           ))}
-          <span className="visual-stamp">EDITORIAL MIX</span>
+          <span className="visual-stamp">TRENDING NOW</span>
         </div>
       )}
 
-      {feature.visual.kind === "series-rail" && (
-        <div className="feature-visual-lineup">
-          {items.map((item) => (
-            <VisualPoster key={item.id} item={item} />
-          ))}
+      {feature.visual.kind === "live-wall" && (
+        <div className="feature-visual-live">
+          <ul className="live-wall live-wall-mini" aria-label="Live TV categories">
+            {liveCategories.slice(0, 4).map((item, index) => (
+              <li
+                className="live-tile"
+                key={item.id}
+                style={{ "--accent": item.accent, "--glow": item.glow } as React.CSSProperties}
+              >
+                <span className="live-tile-live">
+                  <i />
+                  LIVE
+                </span>
+                <strong>{item.name}</strong>
+                <span className="live-tile-progress" aria-hidden="true">
+                  <b style={{ width: `${46 + index * 12}%` }} />
+                </span>
+              </li>
+            ))}
+          </ul>
           <span className="visual-stamp">
-            <Radio size={12} /> FUTURE CHANNEL CONCEPT
+            <Radio size={12} /> LIVE TV GUIDE
           </span>
         </div>
       )}
@@ -164,7 +180,7 @@ export function FeatureVisual({ feature }: { feature: Feature }) {
           <VisualPoster item={first} />
           <div className="visual-panel">
             <Download size={17} />
-            <span>INTENDED OFFLINE FLOW</span>
+            <span>OFFLINE DOWNLOAD QUEUE</span>
             <i />
           </div>
         </div>
@@ -175,7 +191,7 @@ export function FeatureVisual({ feature }: { feature: Feature }) {
           <VisualPoster item={first} />
           <div className="visual-panel">
             <Languages size={17} />
-            <span>LANGUAGE UI CONCEPT</span>
+            <span>SUBTITLES &amp; AUDIO</span>
             <div className="visual-pills">
               <b>Audio</b>
               <b>Subs</b>
@@ -195,7 +211,7 @@ export function FeatureVisual({ feature }: { feature: Feature }) {
             />
           ))}
           <span className="visual-stamp">
-            <Bookmark size={12} /> PLANNED SAVE STATE
+            <Bookmark size={12} /> MY LIST
           </span>
         </div>
       )}
@@ -205,9 +221,9 @@ export function FeatureVisual({ feature }: { feature: Feature }) {
           <VisualPoster item={first} />
           <div className="visual-panel">
             <RefreshCw size={17} />
-            <span>RELEASE NOTE CONCEPT</span>
+            <span>UPDATE AVAILABLE</span>
             <strong>What changed</strong>
-            <small>Illustrative update surface · not delivery status</small>
+            <small>Changelog shown before you install</small>
             <Check size={14} />
           </div>
           {third && <VisualPoster item={third} className="update-secondary" />}
