@@ -10,7 +10,7 @@ import { site } from "@/config/site";
 import { pageMeta } from "@/lib/page-meta";
 
 export const Route = createFileRoute("/")({
-  head: () => pageMeta("StreamZ · Films, series and live TV on Android", "StreamZ is an Android entertainment app: browse films and series, drop into live TV with a full guide, download for offline, and invite friends into a watch party. Current release v0.1.2.", "/"),
+  head: () => pageMeta("StreamZ · Films, series and live TV on Android", `StreamZ is an Android entertainment app: browse films and series, drop into live TV with a full guide, download for offline, and invite friends into a watch party. Current release v${site.release.version}.`, "/"),
   component: Home,
 });
 function Home() {

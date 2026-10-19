@@ -14,12 +14,13 @@ export const site = {
   telegram: verifiedTelegram,
   telegramUrl: verifiedTelegram.url,
   apkUrl: STREAMZ_APK_URL,
-  // Mirrors the v0.1.2 release asset on the StreamZ repo (GitHub API, 2026-10-19).
+  // Mirrors the v0.1.3 release asset on the StreamZ repo (GitHub API, 2026-10-19).
+  // Size is MiB, the same unit Android's installer reports: 81,786,242 bytes.
   release: {
-    version: "0.1.2",
-    build: "3",
+    version: "0.1.3",
+    build: "4",
     size: "78 MB",
-    checksum: "899eb05d771b85ddeadb310017111d2ccf380470bf961fbdc82b23dcb8a4c679",
+    checksum: "71ed2e9875af8531baf1e42888816dfa251d7154ad2b817c328148f273b601a9",
     releaseDate: "19 October 2026",
     packageName: "stream.z",
     repositoryUrl: "https://github.com/mir-majid01/StreamZ",

@@ -27,10 +27,11 @@ describe("StreamZ release rules", () => {
     expect(site.socials).toContainEqual(site.telegram);
   });
   it("publishes only release metadata read from the release asset", () => {
-    expect(site.release.version).toBe("0.1.2");
+    expect(site.release.version).toBe("0.1.3");
+    expect(site.release.build).toBe("4");
     expect(site.release.size).toBe("78 MB");
     expect(site.release.checksum).toBe(
-      "899eb05d771b85ddeadb310017111d2ccf380470bf961fbdc82b23dcb8a4c679",
+      "71ed2e9875af8531baf1e42888816dfa251d7154ad2b817c328148f273b601a9",
     );
     expect(site.release.checksum).toMatch(/^[0-9a-f]{64}$/);
     expect(site.release.minimumAndroid).toBe("");
